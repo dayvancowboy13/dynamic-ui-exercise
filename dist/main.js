@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log('what');\nif (true) {\n    //something happens\n}\n\nalert('fart');\n\n\n\n\n\n\n\n//# sourceURL=webpack://dynamic-ui-exercise/./src/index.js?");
+eval("console.log('fart');\n\n\nconsole.log('blah');\nconsole.log('fart');\n\n\n\n\n//# sourceURL=webpack://dynamic-ui-exercise/./src/index.js?");
 
 /***/ })
 

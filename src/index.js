@@ -1,4 +1,2 @@
-console.log('fart');
-
-console.log('blah');
+import './DropdownMenu.js';
 

@@ -1,9 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dynamic UI Elements</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic UI Elements</title>
+  <!-- <link href="style.css" rel="stylesheet"> -->
+  <style>
+    :root {
+      background-color: rgb(123, 234, 234);
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main-container">
+    <button id="btn1" class="drop-down-btn">
+      Open
+    </button>
+    <div id="menu" class="hidden">Here is some content </div>
+    <button class="drop-down-btn" id="btn2">
+      Btn 2
+    </button>
+    <div id="main-menu" style="visibility: hidden;">More content </div>
+  </div>
+</body>
+
 </html>

@@ -3,14 +3,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: "development",
+    devtool: 'inline-source-map',
+    devServer: {
+        static: './dist'
+    },
+    optimization: {
+        runtimeChunk: 'single'
+    },
     entry: './src/index.js',
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/template.html',
+            filename: './index.html'
         })
     ],
     output: {
-        filename: 'main.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
 };
