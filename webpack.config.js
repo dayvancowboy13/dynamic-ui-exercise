@@ -5,7 +5,9 @@ module.exports = {
     mode: "development",
     devtool: 'inline-source-map',
     devServer: {
-        static: './dist'
+        static: './dist',
+        watchFiles: ['./src/*.html'],
+        hot: true
     },
     optimization: {
         runtimeChunk: 'single'
