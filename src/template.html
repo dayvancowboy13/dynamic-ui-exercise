@@ -20,7 +20,21 @@
     }
 
     #btn1 {
-      transform: translate(600px, 250px);
+      position: absolute;
+      left: 100px;
+      top: 24px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      width: 150px;
+      height: 80px;
+      border: solid blue 2px;
+      background-color: rgb(184, 222, 255);
+      /* transform: translate(600px, 250px); */
+    }
+
+    #main-menu,
+    #menu1 {
+      border: solid black 1px;
+      background-color: brown;
     }
   </style>
 </head>
@@ -31,7 +45,10 @@
     <button id="btn1" class="drop-down-btn">
       Open
     </button>
-    <div id="menu1">Here is some content </div>
+    <div id="menu1">
+      <p>Here is some content</p>
+      <button>Wow! another button!</button>
+    </div>
     <button class="drop-down-btn" id="btn2">
       Btn 2
     </button>
