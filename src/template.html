@@ -5,43 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dynamic UI Elements</title>
-  <!-- <link href="style.css" rel="stylesheet"> -->
-  <style>
-    :root {
-      background-color: rgb(123, 234, 234);
-    }
-
-    .hidden {
-      visibility: hidden;
-    }
-
-    #btn2 {
-      transform: translateX(300px);
-    }
-
-    #btn1 {
-      position: absolute;
-      left: 100px;
-      top: 24px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      width: 150px;
-      height: 80px;
-      border: solid blue 2px;
-      background-color: rgb(184, 222, 255);
-      /* transform: translate(600px, 250px); */
-    }
-
-    #main-menu,
-    #menu1 {
-      border: solid black 1px;
-      background-color: brown;
-    }
-  </style>
+  <link href="./style.css" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Testing dropdowns</h1>
-  <div id="main-container">
+  <div id="header">
+    <h1>Dynamic UI Elements</h1>
+  </div>
+  <!-- <div id="main-container">
     <button id="btn1" class="drop-down-btn">
       Open
     </button>
@@ -53,6 +24,20 @@
       Btn 2
     </button>
     <div id="main-menu" style="visibility: hidden;">More content </div>
+  </div> -->
+  <div id="main-container">
+    <div id="frame">
+      <div id="control-buttons">
+        <button id="previous">Prev</button>
+        <button id="next">Next</button>
+      </div>
+      <div id="image-container">
+        <!-- <img src="./images/1.png" alt="">
+        <img class="hidden" src="./images/2.png" alt="">
+        <img class="hidden" src="./images/3.png" alt="">
+        <img class="hidden" src="./images/4.png" alt=""> -->
+      </div>
+    </div>
   </div>
 </body>
 

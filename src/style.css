@@ -1,7 +1,76 @@
 :root {
-    background-color: azure;
+    background-color: rgb(169, 214, 250);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+}
+
+#frame {
+    /* box-sizing: border-box; */
+    position: relative;
+    border: solid black 20px;
+    width: 600px;
+    height: 400px;
+    z-index: 2;
+    background-color: rgb(0, 0, 0);
+
+
+    & #previous,
+    #next {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        opacity: 60%;
+    }
+
+    & #previous {
+        left: 5px;
+    }
+
+    & #next {
+        right: 5px;
+    }
+}
+
+#image-container {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
+    /* visibility: hidden; */
+}
+
+#btn2 {
+    transform: translateX(300px);
+}
+
+#btn1 {
+    position: absolute;
+    left: 100px;
+    top: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 150px;
+    height: 80px;
+    border: solid blue 2px;
+    background-color: rgb(184, 222, 255);
+    /* transform: translate(600px, 250px); */
+}
+
+#main-menu,
+#menu1 {
+    border: solid black 1px;
+    background-color: brown;
 }
