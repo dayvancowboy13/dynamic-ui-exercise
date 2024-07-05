@@ -1,10 +1,11 @@
 export default class ImageCarousel {
 
     constructor(
-        frameID, containerID, images
+        frameID, containerID, images, sliderID
     ) {
 
         this.frame = document.getElementById(frameID);
+        this.slider = document.getElementById(sliderID);
         this.currentImage = 1;
         this.imagesInCarousel = images.length;
         this.imgContainer = document.getElementById(containerID);
@@ -16,21 +17,75 @@ export default class ImageCarousel {
         this.imgContainer.firstElementChild.classList = '';
 
         this.addButtonListeners();
+        this.setupSlider();
+
+    }
+
+    setupSlider() {
+
+        for (let i = 1; i <= this.imagesInCarousel; i++) {
+
+            this.slider.append(this.createSliderButton(i));
+
+        }
+        // set first button to selected
+        if (this.slider.childElementCount !== 0) {
+
+            this.slider.firstElementChild.classList = 'selected';
+
+        }
+
+    }
 
 
-        // imgContainer.append(this.createImageElement());
+    createSliderButton(index) {
 
+        const btn = document.createElement('button');
+        btn.id = `slider-button ${index}`;
+        btn.classList = 'unselected';
+        btn.addEventListener('click',
+            () => this.sliderButtonClick(btn));
+
+        return btn;
+
+    }
+
+    sliderButtonClick(originButton) {
+
+        // console.log(originButton);
+        this.resetSliderButtons();
+        originButton.classList = 'selected';
+        console.log(this.currentImage);
+        console.log();
+        this.currentImage = parseInt(originButton.id.at(-1));
+        console.log(this.currentImage);
+        this.hideAllImages();
+        this.imgContainer.children.item(this.currentImage - 1).classList = '';
+
+    }
+
+    resetSliderButtons() {
+
+        for (const child of this.slider.children) {
+
+            child.classList = 'unselected';
+
+        }
+
+    }
+
+    setSliderButtonSelected() {
+
+        this.resetSliderButtons();
+        this.slider.children.item(this.currentImage - 1).classList = 'selected';
 
     }
 
     createImageElement(imgSrc) {
 
-        // console.log(imgSrc);
-
         let imgElem = new Image();
         imgElem.src = imgSrc;
         imgElem.classList = 'hidden';
-        // console.log(imgElem);
 
         return imgElem;
 
@@ -50,31 +105,27 @@ export default class ImageCarousel {
 
     previousImage() {
 
-        console.log('prev');
-        // console.log(`Current image is index ${this.currentImage}`);
         this.hideAllImages();
 
         if (this.isFirstImage()) {
 
-            console.log(`First image, index is ${this.currentImage}`);
-            console.log(`Images in carousel is ${this.imagesInCarousel}`);
             this.currentImage = this.imagesInCarousel;
             this.imgContainer.children.item(this.currentImage - 1).classList = '';
 
 
         } else {
 
-            console.log(`Not first image, index is ${this.currentImage}`);
             this.currentImage--;
             this.imgContainer.children.item(this.currentImage - 1).classList = '';
 
         }
 
+        this.setSliderButtonSelected();
+
     }
 
     nextImage() {
 
-        console.log('next');
         this.hideAllImages();
 
         if (this.isLastImage()) {
@@ -88,7 +139,7 @@ export default class ImageCarousel {
             this.currentImage++;
 
         }
-        console.log(this.currentImage);
+        this.setSliderButtonSelected();
 
     }
 
@@ -109,10 +160,6 @@ export default class ImageCarousel {
             return true;
 
         } else return false;
-
-    }
-
-    populateContainer() {
 
     }
 

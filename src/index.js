@@ -29,7 +29,8 @@ const images = importAll(require.context(
 const ic1 = new ImageCarousel(
     'frame',
     'image-container',
-    images
+    images,
+    'slider-container'
 );
 
 // console.log(images);
