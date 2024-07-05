@@ -20,21 +20,25 @@ button {
 #frame {
     /* box-sizing: border-box; */
     position: relative;
-    border: solid black 20px;
+    border: solid black 10px;
     width: 600px;
     height: 400px;
     z-index: 2;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(194, 194, 194);
+    display: flex;
+    justify-content: center;
+}
 
+#control-buttons {
 
-    & #previous,
-    #next {
+    & button {
         position: absolute;
         top: 50%;
         z-index: 3;
         opacity: 60%;
         border-radius: 7px;
         border: none;
+        padding: 3px 4px;
     }
 
     & #previous {
@@ -44,7 +48,23 @@ button {
     & #next {
         right: 5px;
     }
+
+    & #timer-toggle {
+        /* justify-self: center; */
+        top: 2%;
+        right: 44%;
+    }
+
+    .timer-on {
+        opacity: 98%;
+    }
+
+    .timer-off {
+        opacity: 66%;
+    }
 }
+
+
 
 #slider-container {
     --element-width: 50px;
@@ -53,13 +73,15 @@ button {
     justify-content: space-evenly;
     position: absolute;
     bottom: 2%;
-    left: calc(50% - var(--element-width)/2);
+    /* left: calc(50% - var(--element-width)/2); */
+    justify-self: center;
     min-width: var(--element-width);
     min-height: var(--element-height);
     z-index: 3;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 7px;
-    padding: 2px 4px;
+    padding: 2px 6px;
+    gap: 4px;
 
 
     & button {
@@ -87,10 +109,16 @@ button {
 
 
 #image-container {
-    position: absolute;
+    /* position: relative; */
     z-index: 1;
     display: flex;
-    flex-direction: row;
+
+
+    & img {
+
+        height: 100%;
+        /* width: auto; */
+    }
 
 }
 

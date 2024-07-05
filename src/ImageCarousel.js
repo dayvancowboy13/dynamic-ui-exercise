@@ -23,6 +23,11 @@ export default class ImageCarousel {
         this.setupSlider();
         this.beginTimer(this.timeDelay);
 
+    }
+
+    resizeFrame() {
+
+        console.log('calling resize frame function');
 
     }
 
@@ -115,13 +120,14 @@ export default class ImageCarousel {
 
         const prevBtn = document.querySelector('#previous');
         const nextBtn = document.querySelector('#next');
+        const timerBtn = document.querySelector('#timer-toggle');
 
         prevBtn.addEventListener('click',
             () => {
 
                 clearTimeout(this.timerID);
                 this.previousImage();
-                this.beginTimer(this.timeDelay);
+                if (this.isAutoplayOn()) this.beginTimer(this.timeDelay);
 
             });
         nextBtn.addEventListener('click',
@@ -129,9 +135,46 @@ export default class ImageCarousel {
 
                 clearTimeout(this.timerID);
                 this.nextImage();
-                this.beginTimer(this.timeDelay);
+                if (this.isAutoplayOn()) this.beginTimer(this.timeDelay);
+
 
             });
+        timerBtn.addEventListener('click',
+            () => {
+
+                this.toggleTimer(timerBtn.className);
+
+            });
+
+    }
+
+    isAutoplayOn() {
+
+        if (document.querySelector('#timer-toggle').className === 'timer-on') {
+
+            return true;
+
+        } else return false;
+
+    }
+
+    toggleTimer(toggleStatus) {
+
+        if (toggleStatus === 'timer-on') {
+
+            console.log('turning off timer');
+            document.querySelector('#timer-toggle').classList = 'timer-off';
+            document.querySelector('#timer-toggle').textContent = 'Autoplay Off';
+            clearTimeout(this.timerID);
+
+        } else {
+
+            console.log('turning on timer');
+            document.querySelector('#timer-toggle').classList = 'timer-on';
+            document.querySelector('#timer-toggle').textContent = 'Autoplay On';
+            this.beginTimer(this.timeDelay);
+
+        }
 
     }
 

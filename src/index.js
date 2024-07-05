@@ -12,8 +12,6 @@
 
 import ImageCarousel from './ImageCarousel.js';
 import './style.css';
-import Img1 from './images/1.png';
-
 
 function importAll(r) {
 
@@ -32,5 +30,3 @@ const ic1 = new ImageCarousel(
     images,
     'slider-container'
 );
-
-// console.log(images);
