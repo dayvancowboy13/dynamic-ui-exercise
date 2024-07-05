@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dynamic UI Elements</title>
   <link href="./style.css" rel="stylesheet">
-
 <script defer src="runtime.js"></script><script defer src="main.js"></script></head>
 
 <body>
@@ -26,9 +25,20 @@
     </button>
     <div id="main-menu" style="visibility: hidden;">More content </div>
   </div> -->
-  <div id="frame">
-    <div class="image-container">
-
+  <div id="main-container">
+    <div id="frame">
+      <div id="control-buttons">
+        <button id="previous">Prev</button>
+        <button id="next">Next</button>
+      </div>
+      <div id="slider-container">
+      </div>
+      <div id="image-container">
+        <!-- <img src="./images/1.png" alt="">
+        <img class="hidden" src="./images/2.png" alt="">
+        <img class="hidden" src="./images/3.png" alt="">
+        <img class="hidden" src="./images/4.png" alt=""> -->
+      </div>
     </div>
   </div>
 </body>

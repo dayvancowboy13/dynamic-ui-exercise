@@ -9,15 +9,33 @@ export default class ImageCarousel {
         this.currentImage = 1;
         this.imagesInCarousel = images.length;
         this.imgContainer = document.getElementById(containerID);
+        this.timeDelay = 5000;
+
         images.forEach((element) => {
 
             this.imgContainer.append(this.createImageElement(element));
 
         });
+
         this.imgContainer.firstElementChild.classList = '';
 
         this.addButtonListeners();
         this.setupSlider();
+        this.beginTimer(this.timeDelay);
+
+
+    }
+
+    beginTimer(delay) {
+
+        this.timerID = setTimeout(() => {
+
+            console.log(`end of timer ${this.timerID}`);
+            this.nextImage();
+            ImageCarousel.timerID = this.beginTimer(this.timeDelay);
+
+        },
+            delay);
 
     }
 
@@ -44,7 +62,13 @@ export default class ImageCarousel {
         btn.id = `slider-button ${index}`;
         btn.classList = 'unselected';
         btn.addEventListener('click',
-            () => this.sliderButtonClick(btn));
+            () => {
+
+                clearTimeout(this.timerID);
+                this.sliderButtonClick(btn);
+                this.beginTimer(this.timeDelay);
+
+            });
 
         return btn;
 
@@ -52,13 +76,9 @@ export default class ImageCarousel {
 
     sliderButtonClick(originButton) {
 
-        // console.log(originButton);
         this.resetSliderButtons();
         originButton.classList = 'selected';
-        console.log(this.currentImage);
-        console.log();
         this.currentImage = parseInt(originButton.id.at(-1));
-        console.log(this.currentImage);
         this.hideAllImages();
         this.imgContainer.children.item(this.currentImage - 1).classList = '';
 
@@ -97,9 +117,21 @@ export default class ImageCarousel {
         const nextBtn = document.querySelector('#next');
 
         prevBtn.addEventListener('click',
-            () => this.previousImage());
+            () => {
+
+                clearTimeout(this.timerID);
+                this.previousImage();
+                this.beginTimer(this.timeDelay);
+
+            });
         nextBtn.addEventListener('click',
-            () => this.nextImage());
+            () => {
+
+                clearTimeout(this.timerID);
+                this.nextImage();
+                this.beginTimer(this.timeDelay);
+
+            });
 
     }
 
